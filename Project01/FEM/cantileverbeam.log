@@ -1,0 +1,227 @@
+MSC Nastran V2024.1 (AMD Windows 10 Pro 6.2 9200) Control File: 
+----------------------------------------------------------------- 
+$ sysfield=SCR*(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/2024.1/conf/nast20241.rcf[2])
+$ sysfield=DBALL(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/2024.1/conf/nast20241.rcf[3])
+Nastran BUFFSIZE=65537 $(c:/program files/msc.software/msc_nastran/2024.1/conf/nast20241.rcf[6])
+JID='B:\1.Github_Folder\AE-543\AE543\Project01\FEM\cantileverbeam.bdf'
+OUT='./cantileverbeam'
+MEM=32720MB      $ 
+PMEM=0+
+MACH='AMD'
+OPER='Windows 10 Pro'
+OSV='6.2 9200'
+MODEL='AMD Ryzen 9 3950X 16-Core Proc (Willie)'
+NPROC='32'
+CONFIG=15
+NPROC=32
+symbol=DELDIR='c:/program files/msc.software/msc_nastran/2024.1/msc20241/nast/del' $(program default)
+symbol=DEMODIR='c:/program files/msc.software/msc_nastran/2024.1/msc20241/nast/demo' $(program default)
+symbol=LM_NO_SNMP=1 $(c:/program files/msc.software/msc_nastran/2024.1/conf/nast20241.rcf[10])
+symbol=MKL_INTERFACE_LAYER=ILP64 $(c:/program files/msc.software/msc_nastran/2024.1/conf/nast20241.rcf[1])
+symbol=SSSALTERDIR='c:/program files/msc.software/msc_nastran/2024.1/msc20241/nast/sssalter' $(program default)
+symbol=TPLDIR='c:/program files/msc.software/msc_nastran/2024.1/msc20241/nast/tpl' $(program default)
+SDIR='c:/scratch/cantileverbeam.T39920_43'
+DBS='c:/scratch/cantileverbeam.T39920_43'
+SCR='yes'
+SMEM=100
+BPOOL=31534.5MB
+DMPMEM=estimate
+NEWDEL='c:/program files/msc.software/msc_nastran/2024.1/msc20241/win64i8/sss'
+DEL='MSCDEF'
+SPOTWELD=''
+UDR=''
+DML=MSCDEF
+SDL=MSCDEF
+AUTH='27500@WILLIE'
+AUTHQUE=20
+MSGCAT='c:/program files/msc.software/msc_nastran/2024.1/msc20241/win64i8/analysis.msg'
+MSGDEST='f06'
+NEWS='c:/program files/msc.software/msc_nastran/2024.1/msc20241/nast/news.txt'
+----------------------------------------------------------------- 
+MSC_ISHELLPATH=c:\Program Files\MSC.Software\MSC_Nastran\2024.1\msc20241\actran\win64\Actran_2024.1\bin;c:\Program Files\MSC.Software\MSC_Nastran\2024.1\msc20241\nast; 
+MSC_JIDPATH= 
+PATH=c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8;c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\nvidia;c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\intel\bin64;c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\lib;c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8;C:\Program Files\MSC.Software\Patran_x64\20241\bin;C:\Program Files\MSC.Software\Patran_x64\20241\bin\exe;C:\Program Files\MSC.Software\Patran_x64\20241\Perl_msc\bin;C:\Program Files\MSC.Software\Patran_x64\20241\scasystem_files;C:\Program Files\MSC.Software\Patran_x64\20241\scasystem_files\SCA\IFPStar;C:\Program Files\MSC.Software\Patran_x64\20241\scasystem_files\SCA\AEMDB;C:\Program Files\MSC.Software\Patran_x64\20241\bin;C:\Program Files\MSC.Software\Patran_x64\20241\bin\exe;C:\Program Files\MSC.Software\Patran_x64\20241\Perl_msc\bin;C:\Program Files\MSC.Software\Patran_x64\20241\scasystem_files;C:\Program Files\MSC.Software\Patran_x64\20241\scasystem_files\SCA\IFPStar;C:\Program Files\MSC.Software\Patran_x64\20241\scasystem_files\SCA\AEMDB;C:\Program Files\MSC.Software\Patran_x64\20241\bin;C:\ffmpeg\bin;C:\Program Files (x86)\Intel\oneAPI\tbb\latest\redist\intel64\vc_mt\;C:\Program Files (x86)\Intel\oneAPI\tbb\latest\redist\ia32\vc_mt\;C:\Program Files (x86)\Intel\oneAPI\compiler\latest\windows\redist\intel64_win\compiler;C:\Program Files (x86)\Intel\oneAPI\compiler\latest\windows\redist\ia32_win\compiler;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2020.0.166\windows\mpi\intel64\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\mpirt;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\ia32_win\mpirt;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\ia32_win\compiler;C:\Program Files\Microsoft MPI\Bin\;C:\SIMULIA\Commands;C:\Program Files (x86)\Intel\oneAPI\compiler\2023.0.0\env;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:;B:\MATLAB\R2023a\runtime\win64;B:\MATLAB\R2023a\bin;C:\Program Files\Wolfram Research\WolframScript\;C:\Program Files\gs\gs10.02.0\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2023.3.1\;C:\TDM-GCC-64\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MSC.Software\MSC Apex\2024-011290;C:\Program Files\HDF_Group\HDF5\1.14.6\bin\;C:\Users\Hoang Nguyen\AppData\Local\Programs\Python\Launcher\;C:\Users\Hoang Nguyen\AppData\Local\Microsoft\WindowsApps;C:\Users\Hoang Nguyen\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Users\Hoang Nguyen\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Hoang Nguyen\AppData\Local\GitHubDesktop\bin;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2020.0.166\windows\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build;C:\Users\Hoang Nguyen\.dotnet\tools;C:\Program Files\JetBrains\PyCharm 2023.2.2\bin;;C:\msys64\ucrt64\bin;;; 
+SCA_SERVICE_CATALOG=c:\program files\msc.software\msc_nastran\2024.1\msc20241\res\SCAServiceCatalog.xml 
+SCA_RESOURCE_DIR=c:\program files\msc.software\msc_nastran\2024.1\msc20241\res 
+Cmd Line:    c:\Program Files\MSC.Software\MSC_Nastran\2024.1\msc20241\win64i8\nastran.exe CantileverBeam.bdf bat=no 
+Current Dir: B:\1.Github_Folder\AE-543\AE543\Project01\FEM 
+Time Cmd:    c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\msctime 
+Executable:  c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\analysis.exe 
+Arch= Kywd:  [Not specified]  
+MSC_MSG:     stderr  
+FPE:         yes  
+----------------------------------------------------------------- 
+Current resource limits:
+ Physical memory:                    65440 MB
+ Physical memory available:          36014 MB
+ Paging file size:                   69536 MB
+ Paging file size available:         28213 MB
+ Virtual memory:                 134217727 MB
+ Virtual memory available:       134213506 MB
+----------------------------------------------------------------- 
+System configuration:
+ Hostname:         Willie
+ Architecture:     win64i8
+ Platform:         AMD Windows 10 Pro 6.2 9200 (Windows Compute Cluster)
+ Model:            AMD Ryzen 9 3950X 16-Core Proc
+ Clock freq.:      17267 MHz
+ Number of CPUs:   32
+ Number of CPUs:   0 ( limited by PBS )
+ Executable:       standard
+ Raw model ID:     15
+ Config number:    15
+ Physical memory:  65440 MB
+ Virtual memory:   69536 MB
+ Numeric format:   64-bit little-endian IEEE.
+ Bytes per word:   8
+ Disk block size:  512 bytes (64 words)
+ Remote shell cmd: "c:/program files/msc.software/msc_nastran/2024.1/msc20241/win64i8/mscrmtcmd.exe" (Windows non-CCS nodes, UNIX)
+                   <ccs_cmd> (Windows CCS nodes)
+----------------------------------------------------------------- 
+MSC Nastran started  Mon Oct 27 23:54:44 PDT 2025 
+ 23:54:48  Beginning Analysis
+SCA Kernel 30.0.935612 successfully initialized
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\libimalloc.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\mkl_core.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\mkl_intel_thread.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\mkl_rt.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\MSCblas.dll" has been loaded.
+
+ 23:54:50  MSC Authorization Information - System Attributes (1004, 0)
+ 23:54:50  -----------------------------------------------------------
+  Date:          Mon Oct 27 23:54:50 2025
+  MSC Id:        244bfede954d (ethernet) (Intel)
+  Hostname:      Willie (user Hoang Nguyen, display Willie)
+  License files: 27500@WILLIE
+  CEID:          -00AB6G6F
+  User:          Hoang Nguyen
+  Display:       Willie
+  LAPI Version:  LAPI 12.0.0 (CL NOTSET) (FLEXlm 11.16.3.0)
+
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+  * *                                 * *
+  * *   MSC Customer Entitlement ID   * *
+  * *        -00AB6G6F                * *
+  * *                                 * *
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+
+ 23:54:51  MSC Authorization Information - Checkout Successful (1016, 0)
+ 23:54:51  -------------------------------------------------------------
+ 23:54:51  Acquired 1 license for MSC Nastran from license server on host WILLIE
+
+
+Beginning bulk data processing using the IFPStar component.
+For more information on IFPStar, please see KB article KB8019200
+on our support pages, at http://simcompanion.hexagon.com.
+
+ 23:54:52  95 records read from JID file "B:\1.Github_Folder\AE-543\AE543\Project01\FEM\cantileverbeam.bdf"
+
+Processing of bulk data entries is complete.
+
+ 23:54:53  Finite element model generation started.
+ ================================================== 
+ Warning/Fatal Message Summary           Occurrence
+       USER WARNING MESSAGE     5487.0          1 
+       USER WARNING MESSAGE     5487.0         19 
+         USER FATAL MESSAGE     2026.0         20 
+       USER WARNING MESSAGE     9031.0          1 
+ ================================================== 
+ ====================================================================================================================================
+
+ ================================== M O D E L  S O L U T I O N  S U M M A R Y  O U T P U T ==========================================
+
+ ====================================================================================================================================
+    Solution Summary: Input BDF Entry Summary Information:
+
+     INPUT BDF MODEL SUMMARY  (Totals for ALL BEGIN BULK sections)
+      ENTRY NAME        NUMBER OF ENTRIES
+      ----------        -----------------
+      CBEAM                            20
+      FORCE                             1
+      GRID                             21
+      HDF5OUT                           1
+      LOAD                              1
+      MAT1                              1
+      PARAM                             1
+      PBEAML                            1
+      SPC1                              1
+      SPCADD                            1
+
+ ====================================================================================================================================
+    Solution Summary: Solution Model Element Summary Information:
+
+       FEM summary: the solution model contains the following element types
+        20 BEAM     (EST typeID:  2) elements
+        20 TOTAL    number of elements.
+
+ ====================================================================================================================================
+    Solution Summary: Model Summary Information:
+     Number of Structure GRIDs              :          21
+     Number of Nonzero K-matrix terms       :           0
+     Number of Solution Equations           :           0
+
+ ====================================================================================================================================
+    Solution Summary: Disk Utilization Information:
+
+ *** TOTAL DISK USAGE STATISTICS ***
+
+ +------------- MAXIMUM DISK USAGE -------------+
+    HIWATER               SUB_DMAP        DMAP
+       (MB)   DAY_TIME      NAME         MODULE
+      4.250   23:54:51    PREFACE     0  PREFACE 
+
+
+ *** DATABASE USAGE STATISTICS ***
+ 
+ +---------------- LOGICAL DBSETS ----------------+   +------------------------------ DBSET FILES -----------------------------+
+  DBSET     ALLOCATED  BLOCKSIZE       USED   USED     FILE      ALLOCATED  ALLOCATED    HIWATER       HIWATER  I/O TRANSFERRED
+             (BLOCKS)    (WORDS)   (BLOCKS)      %                (BLOCKS)       (GB)   (BLOCKS)          (GB)             (GB)
+ 
+  MASTER        25000      65536         68   0.27     MASTER        25000      12.21         74         0.036            0.002
+  DBALL      20000000      65536         12   0.00     DBALL      20000000    9765.62         12         0.006            0.002
+  OBJSCR        25000       8192        488   1.95     OBJSCR        25000       1.53        488         0.030            0.000
+  SCRATCH    40000100      65536         60   0.00    (MEMFILE         100       0.05         64         0.031            0.000)
+                                                       SCRATCH    20000000    9765.62          1         0.000            0.000
+                                                       SCR300     20000000    9765.62          1         0.000            0.000
+                                                                                                                 ==============
+                                                                                                          TOTAL:          0.006
+ 
+ *** BUFFER POOL AND SCRATCH 300 USAGE STATISTICS ***
+ 
+ +----------------- BUFFER POOL -----------------+      +-------------------------- SCRATCH 300 --------------------------+ 
+   OPTION        BLOCKS      BLOCKS      BLOCKS           OPTION    HIWATER               SUB_DMAP        DMAP     OPN/CLS
+  SELECTED     ALLOCATED     REUSED     RELEASED         SELECTED  (BLOCKS)   DAY_TIME      NAME         MODULE    COUNTER
+   BPOOL4         63068       28237           0              2           1    23:54:51    PREFACE     0  PREFACE       0
+ ====================================================================================================================================
+
+ 23:54:54  19 records read from JID file "B:\1.Github_Folder\AE-543\AE543\Project01\FEM\cantileverbeam.bdf"
+ 23:54:54  NSEXIT: EXIT(20)
+ 23:54:55  Analysis complete  -20
+20
+Real:        9.217 seconds ( 0:00:09.217)
+User:        1.312 seconds ( 0:00:01.312)
+Sys:         1.281 seconds ( 0:00:01.281)
+ ==================================================
+ OS:                           6.2
+ OEM ID:                       9
+ Model:                        AMD Ryzen 9 3950X 16-Core Processor  
+ Number of processors:         32
+ Page size:                    4096
+ Processor type:               8664
+ Minimum application address:  10000
+ Maximum application address:  fffeffff
+ Active processor mask:        4294967295
+ Nsocket:                      1
+ Ncore:                        16  ( 1 X 16 )
+ HyperThreading:               On
+ Ram:                          65440 Mb
+ ==================================================
+ Time Summary                 CPU       Wall   ( Time in Seconds )
+ Consider using SOLVE=AUTO if you have not.
+ =====================================================
+ Detailed performance information can be found in the 
+ "MSC Nastran High Performance Computing User's Guide"
+ =====================================================
+MSC Nastran finished Mon Oct 27 23:54:56 PDT 2025 

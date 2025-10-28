@@ -1,0 +1,95 @@
+$ MSC.Nastran input file created on October   27, 2025 at 23:54:35 by
+$ Patran 2024.1
+$ Direct Text Input for Nastran System Cell Section
+$ Direct Text Input for File Management Section
+$ Direct Text Input for Executive Control
+$ Linear Static Analysis, Database
+SOL 101
+CEND
+$ Direct Text Input for Global Case Control Data
+ECHO = NONE
+SUBCASE 1
+$ Subcase name : LinearStatic
+   SUBTITLE=LinearStatic
+   SPC = 2
+   LOAD = 2
+   DISPLACEMENT(SORT1,REAL)=ALL
+   SPCFORCES(SORT1,REAL)=ALL
+   STRESS(SORT1,REAL,VONMISES,BILIN)=ALL
+BEGIN BULK
+$ Direct Text Input for Bulk Data
+HDF5OUT PRCISION 32     CMPRMTHD LZ4     LEVEL   5
+PARAM   PRTMAXIM YES
+$ Elements and Element Properties for region : Beam
+PBEAML   1       1               BOX
+         .7      .25     .01     .01
+$ Pset: "Beam" will be imported as: "pbeaml.1"
+CBEAM    1       1       1       2       1.      0.      0.
+CBEAM    2       1       2       3       1.      0.      0.
+CBEAM    3       1       3       4       1.      0.      0.
+CBEAM    4       1       4       5       1.      0.      0.
+CBEAM    5       1       5       6       1.      0.      0.
+CBEAM    6       1       6       7       1.      0.      0.
+CBEAM    7       1       7       8       1.      0.      0.
+CBEAM    8       1       8       9       1.      0.      0.
+CBEAM    9       1       9       10      1.      0.      0.
+CBEAM    10      1       10      11      1.      0.      0.
+CBEAM    11      1       11      12      1.      0.      0.
+CBEAM    12      1       12      13      1.      0.      0.
+CBEAM    13      1       13      14      1.      0.      0.
+CBEAM    14      1       14      15      1.      0.      0.
+CBEAM    15      1       15      16      1.      0.      0.
+CBEAM    16      1       16      17      1.      0.      0.
+CBEAM    17      1       17      18      1.      0.      0.
+CBEAM    18      1       18      19      1.      0.      0.
+CBEAM    19      1       19      20      1.      0.      0.
+CBEAM    20      1       20      21      1.      0.      0.
+$ Referenced Material Records
+$ Material Record : Aluminum_6061T6
+$ Description of Material : Date: 27-Oct-25           Time: 23:38:09
+MAT1*    1               6.9000004+10                    .33
+*        2700.
+$ Nodes of the Entire Model
+GRID     1               0.      0.      0.
+GRID     2               .25     0.      0.
+GRID     3               .5      0.      0.
+GRID     4               .75     0.      0.
+GRID     5               1.      0.      0.
+GRID     6               1.25    0.      0.
+GRID     7               1.5     0.      0.
+GRID*    8                              1.75000011920929 0.
+*        0.
+GRID*    9                              2.00000023841858 0.
+*        0.
+GRID*    10                             2.25000023841858 0.
+*        0.
+GRID*    11                             2.50000023841858 0.
+*        0.
+GRID*    12                             2.75000023841858 0.
+*        0.
+GRID*    13                             3.00000047683716 0.
+*        0.
+GRID*    14                             3.25000047683716 0.
+*        0.
+GRID*    15                             3.50000047683716 0.
+*        0.
+GRID*    16                             3.75000047683716 0.
+*        0.
+GRID*    17                             4.00000047683716 0.
+*        0.
+GRID*    18                             4.25000047683716 0.
+*        0.
+GRID*    19                             4.50000095367432 0.
+*        0.
+GRID*    20                             4.75000095367432 0.
+*        0.
+GRID     21              5.      0.      0.
+$ Loads for Load Case : LinearStatic
+SPCADD   2       1
+LOAD     2       1.      1.      1
+$ Displacement Constraints of Load Set : SPC
+SPC1     1       123456  1
+$ Nodal Forces of Load Set : Tip_Mass
+FORCE    1       21      0       1000.   0.      0.      -1.
+$ Referenced Coordinate Frames
+ENDDATA f821d76d

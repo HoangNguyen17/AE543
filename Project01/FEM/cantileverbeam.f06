@@ -1,0 +1,582 @@
+1
+ 
+ 
+ 
+ 
+                      Warning: This computer program is protected by copyright law and international treaties.       
+                  Unauthorized use, reproduction or distribution of this computer program, or any portion of it, may 
+                                          result in severe civil and criminal penalties.                             
+                         Copyright (C) 2024 Hexagon AB and/or its subsidiaries. All rights reserved.                 
+ 
+ 
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * *                                 * *
+                                              * *           Hexagon AB            * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *      M S C   N a s t r a n      * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *     Version 2024.1-CL942729     * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *          MAY 13, 2024           * *
+                                              * *                                 * *
+                                              * *               AMD               * *
+                                              * * MODEL AMD Ryzen 9 3950X 16-Core * *
+                                              * *     Windows 10 Pro 6.2 9200     * *
+                                              * *        Compiled for 8664        * *
+                                              * *                                 * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+1News file
+  
+               Welcome to MSC Nastran 2024.1
+  
+   MSC Nastran brings powerful new features and enhancements for engineering
+   solutions in several releases through the year. Key enhancements in
+   Version 2024.1 are summarized below. Addtional details can be found in
+   the MSC Nastran Version 2024.1 Release Guide.
+  
+     MSC Nastran 2024.1 Features and Enhancements
+  
+     High Performance Computing
+     - Reduced runtime for linear statics with large number of load cases,
+       particularly when MAXMIN is requested (PARAM,PRTMAXIM)
+     - New DOMAINSOLVER option: STATRED
+       - Uses Automatic Multi-level Static Reduction to compute A-set
+         (boundary) static reduction
+       - Available for External Superelements and External Modules in
+         static analysis
+     - MUMPS solver out-of-core capability available for large models
+     - MUMPS solver DMP capability integrated into Lanczos - both normal modes
+       and buckling
+     - Faster Coupled Modes method
+       - Available in SOLs 103, 111 and 200
+       - Also available for External Superelement analysis
+  
+     High Performance SOL 400 (NLPERF)
+     - MUMPS solver added with both SMP and DMP parallel scalability
+     - SMP scalability up to 32 threads
+     - New Convergence monitor for job monitoring during analysis
+     - Contact support enabled with the Arc-Length Method
+  
+     Rotordynamics
+     - SOL 128 post processing improvements to output iterative outputs for
+       displacements and nonlinear load in CSV format. Provide outputs for
+       selected frequencies of interest.
+  
+     HDF5 Module output control
+     - Module model data and results may be optionally appended to an existing
+       HDF5 file for results grouping
+     - MDSET Case Control command provides a means to select specific modules
+       for data recovery when there are duplicate element or grid IDs across
+       modules
+  
+     NVH
+     - Single-step Transfer Path Analysis (TPA) in SOL 111 for Simplified
+       Estimation and Ranking of Noise and Vibration contributions via the
+       different Transmission Paths in a Structure or Structure-Cavity System
+     - Reduced disk space requirements and faster solution time for models
+       with poroelastic materials (PEM)
+1    - PEAKOUT capability extended for Equivalent Radiated Power (ERP) at
+       peak frequencies.
+     - Modeling of glue lines in linear solutions using cohesive elements
+  
+     ADAMS MNF Enhancement
+     - Fluid modes at acoustic grids can now be included in the MNF to
+       facilitate the recovery of acoustic pressure directly in Adams
+     - Rotordynamic effects can now be included in the MNF to allow Adams to
+       capture rotordynamic effects
+  
+     Documentation
+     - The complete documentation set is provided in a separate installer and
+       when installed is available at: MSC_DOC_DIR/doc/pdf_nastran directory,
+       where MSC_DOC_DIR is the directory where documentation was installed.
+       This help set includes cross references between documents, and links to
+       how-to videos, and example files
+  
+     Individual MSC Nastran documents are available for download from the
+       Simcompanion Website at:
+       http://simcompanion.hexagon.com/
+  
+     The documentation set includes the following:
+  
+         1.  MSC Nastran 2024.1 Installation and Operations Guide
+         2.  MSC Nastran 2024.1 Quick Reference Guide
+         3.  MSC Nastran 2024.1 Release Guide
+         4.  MSC Nastran 2024.1 Linear Statics Analysis User's Guide
+         5.  MSC Nastran 2024.1 Dynamic Analysis User's Guide
+         6.  MSC Nastran 2024.1 Superelements User's Guide
+         7.  MSC Nastran 2024.1 Rotordynamics User's Guide
+         8.  MSC Nastran 2024.1 Demonstration Problems Manual
+         9.  MSC Nastran 2024.1 Nastran Embedded Fatigue User's Guide
+        10.  MSC Nastran 2024.1 Design Sensitivity and Optimization
+        11.  MSC Nastran 2024.1 Nonlinear User's Guide SOL 400
+        12.  MSC Nastran 2024.1 DMAP Programmer's Guide
+        13.  MSC Nastran 2024.1 High Performance Computing User's Guide
+        14.  MSC Nastran 2024.1 New Verification Manual
+        15.  MSC Nastran 2024.1 DEMATD Guide
+        16.  MSC Nastran 2024.1 Explicit Nonlinear (SOL 700) User's Guide
+        17.  MSC Nastran 2024.1 ACMS User's Guide
+  
+   Please refer to  MSC_DOC_DIR/doc/pdf_nastran/nastran_library.pdf
+   for the complete document set:
+  
+  
+   Additional information about the release can be found at the MSC Nastran
+   Product Support page: http://simcompanion.hexagon.com
+  
+   The support page provides links to these valuable information:
+      * A searchable Knowledge Base containing examples and answers to thousands
+1       of frequently asked questions written by MSC Software subject-matter
+        experts.
+      * Peer-to-peer Discussion Forums enabling you to post questions for your
+        MSC Software products and receive answers from other users worldwide.
+      * A list of known issues with the product and any workarounds.
+      * Instructions on how to contact technical support
+      * A mechanism for sending us product feedback or enhancement requests.
+      * Hardware and software requirements.
+      * Examples and Tutorials
+      * and much more.
+  
+   For information on training, please visit our Training web site
+  
+      https://hexagon.com/support-success/manufacturing-intelligence/
+      design-engineering-support/training-materials
+  
+1                                                                           OCTOBER  27, 2025  MSC Nastran  5/13/24   PAGE     1
+                                                                                                                                    
+0        N A S T R A N    F I L E    A N D    S Y S T E M    P A R A M E T E R    E C H O                                           
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     $ SYSFIELD=SCR*(RAW=YES,BUFFIO=YES,WNUM=16,WSIZE=16MB) $(C:/PROGRAM FILES/MSC.SO
+     $ SYSFIELD=DBALL(RAW=YES,BUFFIO=YES,WNUM=16,WSIZE=16MB) $(C:/PROGRAM FILES/MSC.S
+     NASTRAN BUFFSIZE=65537 $(C:/PROGRAM FILES/MSC.SOFTWARE/MSC_NASTRAN/2024.1/CONF/N
+     $ MSC.NASTRAN INPUT FILE CREATED ON OCTOBER   27, 2025 AT 23:54:35 BY           
+     $ PATRAN 2024.1                                                                 
+     $ DIRECT TEXT INPUT FOR NASTRAN SYSTEM CELL SECTION                             
+     $ DIRECT TEXT INPUT FOR FILE MANAGEMENT SECTION                                 
+     $ DIRECT TEXT INPUT FOR EXECUTIVE CONTROL                                       
+     $ LINEAR STATIC ANALYSIS, DATABASE                                              
+1                                                                           OCTOBER  27, 2025  MSC Nastran  5/13/24   PAGE     2
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     SOL 101                                                                                 
+     CEND                                                                                    
+1                                                                           OCTOBER  27, 2025  MSC Nastran  5/13/24   PAGE     3
+                                                                                                                                    
+0                                                                                                                                   
+0                                        C A S E    C O N T R O L    E C H O                                                        
+                 COMMAND                                                                                                            
+                 COUNT                                                                                                              
+                  1      $ DIRECT TEXT INPUT FOR GLOBAL CASE CONTROL DATA                                        
+                  2      ECHO = NONE                                                                             
+                  3      SUBCASE 1                                                                               
+                  4      $ SUBCASE NAME : LINEARSTATIC                                                           
+                  5         SUBTITLE=LINEARSTATIC                                                                
+                  6         SPC = 2                                                                              
+                  7         LOAD = 2                                                                             
+                  8         DISPLACEMENT(SORT1,REAL)=ALL                                                         
+                  9         SPCFORCES(SORT1,REAL)=ALL                                                            
+                 10         STRESS(SORT1,REAL,VONMISES,BILIN)=ALL                                                
+                 11      BEGIN BULK                                                                              
+1                                                                           OCTOBER  27, 2025  MSC Nastran  5/13/24   PAGE     4
+                                                                                                                                    
+0                                                                                                                                   
+                                        M O D E L   S U M M A R Y          BULK = 0
+                                   ENTRY NAME        NUMBER OF ENTRIES
+                                   ----------        -----------------
+                                        CBEAM                       20
+                                        FORCE                        1
+                                         GRID                       21
+                                      HDF5OUT                        1
+                                         LOAD                        1
+                                         MAT1                        1
+                                        PARAM                        1
+                                       PBEAML                        1
+                                         SPC1                        1
+                                       SPCADD                        1
+
+ ^^^     
+ ^^^ >>> IFP OPERATIONS COMPLETE <<< 
+ ^^^     
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 PVT, TRAILER[101, 5, 0, 0, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 CASECC, TRAILER[102, 1, 0, 1000, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM1Q, TRAILER[101, 0, 0, 8, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 EPT, TRAILER[101, 0, 0, 0, 1024, 0, 16])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 MPT, TRAILER[102, 32768, 0, 0, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM2, TRAILER[103, 0, 0, 0, 1024, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM3S, TRAILER[104, 0, 0, 64, 8, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (DATA BLOCK GEOM3S IS NOT SUPPORTED)
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM4S, TRAILER[105, 0, 0, 0, 96, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (DATA BLOCK GEOM4S IS NOT SUPPORTED)
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM1, TRAILER[101, 0, 0, 8, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 EDT, TRAILER[103, 0, 0, 524288, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM3, TRAILER[101, 0, 0, 64, 8, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM4, TRAILER[102, 0, 0, 0, 96, 0, 0])
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =1 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =2 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =3 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =4 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =5 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =6 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =7 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =8 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =9 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =10 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =11 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =12 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =13 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =14 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =15 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =16 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =17 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =18 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =19 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER WARNING MESSAGE 5487 (EBEMS)
+     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =20 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT         1 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT         2 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT         3 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT         4 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT         5 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT         6 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT         7 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT         8 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+1                                                                           OCTOBER  27, 2025  MSC Nastran  5/13/24   PAGE     5
+                                                                                                                                    
+0                                                                                                                                   
+0
+0
+0
+ 
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT         9 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        10 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        11 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        12 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        13 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        14 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        15 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        16 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        17 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        18 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        19 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        20 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER WARNING MESSAGE 9031 (SUBDMAP ERRPH1)
+     NOGO ENCOUNTERED IN SUBDMAP SEMG
+1                                                                           OCTOBER  27, 2025  MSC Nastran  5/13/24   PAGE     6
+                                                                                                                                    
+0                                                                                                                                   
+ * * * *  D B D I C T   P R I N T  * * * *      SUBDMAP = PRTSUM  ,  DMAP STATEMENT NO.     75
+
+
+
+0                                   * * * *  A N A L Y S I S  S U M M A R Y  T A B L E  * * * *
+0 SEID  PEID PROJ VERS APRCH      SEMG SEMR SEKR SELG SELR MODES DYNRED SOLLIN SOLNL LOOPID DESIGN CYCLE SENSITIVITY
+ -------------------------------------------------------------------------------------------------------------------
+0SEID = SUPERELEMENT ID.
+ PEID = PRIMARY SUPERELEMENT ID OF IMAGE SUPERELEMENT.
+ PROJ = PROJECT ID NUMBER.
+ VERS = VERSION ID.
+ APRCH = BLANK FOR STRUCTURAL ANALYSIS.  HEAT FOR HEAT TRANSFER ANALYSIS.
+ SEMG = STIFFNESS AND MASS MATRIX GENERATION STEP.
+ SEMR = MASS MATRIX REDUCTION STEP (INCLUDES EIGENVALUE SOLUTION FOR MODES).
+ SEKR = STIFFNESS MATRIX REDUCTION STEP.
+ SELG = LOAD MATRIX GENERATION STEP.
+ SELR = LOAD MATRIX REDUCTION STEP. 
+ MODES = T (TRUE) IF NORMAL MODES OR BUCKLING MODES CALCULATED.
+ DYNRED = T (TRUE) MEANS GENERALIZED DYNAMIC AND/OR COMPONENT MODE REDUCTION PERFORMED.
+ SOLLIN = T (TRUE) IF LINEAR SOLUTION EXISTS IN DATABASE.
+ LOOPID = THE LAST LOOPID VALUE USED IN THE NONLINEAR ANALYSIS.  USEFUL FOR RESTARTS.
+ SOLNL = T (TRUE) IF NONLINEAR SOLUTION EXISTS IN DATABASE.
+ DESIGN CYCLE = THE LAST DESIGN CYCLE (ONLY VALID IN OPTIMIZATION).
+ SENSITIVITY = SENSITIVITY MATRIX GENERATION FLAG.
+ 
+ No PARAM values were set in the Control File.
+ 
+1                                        * * * END OF JOB * * *
+ 
+ 
+ No Symbolic Replacement variables or values were specified.
+
