@@ -20,8 +20,8 @@ symbol=LM_NO_SNMP=1 $(c:/program files/msc.software/msc_nastran/2024.1/conf/nast
 symbol=MKL_INTERFACE_LAYER=ILP64 $(c:/program files/msc.software/msc_nastran/2024.1/conf/nast20241.rcf[1])
 symbol=SSSALTERDIR='c:/program files/msc.software/msc_nastran/2024.1/msc20241/nast/sssalter' $(program default)
 symbol=TPLDIR='c:/program files/msc.software/msc_nastran/2024.1/msc20241/nast/tpl' $(program default)
-SDIR='c:/scratch/cantileverbeam.T39920_43'
-DBS='c:/scratch/cantileverbeam.T39920_43'
+SDIR='c:/scratch/cantileverbeam.T24776_51'
+DBS='c:/scratch/cantileverbeam.T24776_51'
 SCR='yes'
 SMEM=100
 BPOOL=31534.5MB
@@ -53,9 +53,9 @@ FPE:         yes
 ----------------------------------------------------------------- 
 Current resource limits:
  Physical memory:                    65440 MB
- Physical memory available:          36014 MB
+ Physical memory available:          41754 MB
  Paging file size:                   69536 MB
- Paging file size available:         28213 MB
+ Paging file size available:         37528 MB
  Virtual memory:                 134217727 MB
  Virtual memory available:       134213506 MB
 ----------------------------------------------------------------- 
@@ -78,8 +78,8 @@ System configuration:
  Remote shell cmd: "c:/program files/msc.software/msc_nastran/2024.1/msc20241/win64i8/mscrmtcmd.exe" (Windows non-CCS nodes, UNIX)
                    <ccs_cmd> (Windows CCS nodes)
 ----------------------------------------------------------------- 
-MSC Nastran started  Mon Oct 27 23:54:44 PDT 2025 
- 23:54:48  Beginning Analysis
+MSC Nastran started  Tue Oct 28 22:08:52 PDT 2025 
+ 22:08:55  Beginning Analysis
 SCA Kernel 30.0.935612 successfully initialized
 BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\libimalloc.dll" has been loaded.
 BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\mkl_core.2.dll" has been loaded.
@@ -87,9 +87,9 @@ BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.1\msc20241\win6
 BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\mkl_rt.2.dll" has been loaded.
 BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.1\msc20241\win64i8\MSCblas.dll" has been loaded.
 
- 23:54:50  MSC Authorization Information - System Attributes (1004, 0)
- 23:54:50  -----------------------------------------------------------
-  Date:          Mon Oct 27 23:54:50 2025
+ 22:08:55  MSC Authorization Information - System Attributes (1004, 0)
+ 22:08:55  -----------------------------------------------------------
+  Date:          Tue Oct 28 22:08:55 2025
   MSC Id:        244bfede954d (ethernet) (Intel)
   Hostname:      Willie (user Hoang Nguyen, display Willie)
   License files: 27500@WILLIE
@@ -107,27 +107,27 @@ BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.1\msc20241\win6
   * * * * * * * * * * * * * * * * * * * *
   * * * * * * * * * * * * * * * * * * * *
 
- 23:54:51  MSC Authorization Information - Checkout Successful (1016, 0)
- 23:54:51  -------------------------------------------------------------
- 23:54:51  Acquired 1 license for MSC Nastran from license server on host WILLIE
+ 22:08:57  MSC Authorization Information - Checkout Successful (1016, 0)
+ 22:08:57  -------------------------------------------------------------
+ 22:08:57  Acquired 1 license for MSC Nastran from license server on host WILLIE
 
 
 Beginning bulk data processing using the IFPStar component.
 For more information on IFPStar, please see KB article KB8019200
 on our support pages, at http://simcompanion.hexagon.com.
 
- 23:54:52  95 records read from JID file "B:\1.Github_Folder\AE-543\AE543\Project01\FEM\cantileverbeam.bdf"
+ 22:08:58  97 records read from JID file "B:\1.Github_Folder\AE-543\AE543\Project01\FEM\cantileverbeam.bdf"
 
 Processing of bulk data entries is complete.
 
- 23:54:53  Finite element model generation started.
- ================================================== 
- Warning/Fatal Message Summary           Occurrence
-       USER WARNING MESSAGE     5487.0          1 
-       USER WARNING MESSAGE     5487.0         19 
-         USER FATAL MESSAGE     2026.0         20 
-       USER WARNING MESSAGE     9031.0          1 
- ================================================== 
+ 22:08:58  Finite element model generation started.
+ 22:08:58  Finite element model generated 126 degrees of freedom.
+ 22:08:58  Finite element model generation successfully completed.
+ 22:08:58  Application of Loads and Boundary Conditions to the finite element model started.
+ 22:08:58  Application of Loads and Boundary Conditions to the finite element model successfully completed.
+ 22:08:58  Solution of the system equations for linear statics started.
+ 22:08:58  Solution of the system equations for linear statics successfully completed.
+ 22:08:58  Linear static analysis completed.
  ====================================================================================================================================
 
  ================================== M O D E L  S O L U T I O N  S U M M A R Y  O U T P U T ==========================================
@@ -140,9 +140,10 @@ Processing of bulk data entries is complete.
       ----------        -----------------
       CBEAM                            20
       FORCE                             1
+      GRAV                              1
       GRID                             21
       HDF5OUT                           1
-      LOAD                              1
+      LOAD                              2
       MAT1                              1
       PARAM                             1
       PBEAML                            1
@@ -157,10 +158,17 @@ Processing of bulk data entries is complete.
         20 TOTAL    number of elements.
 
  ====================================================================================================================================
+    Solution Summary: Displacement DOF Sets Summary Information:
+
+                                        **** U S E T   D E F I N I T I O N   T A B L E ****
+ DOF SET              SB       SG        L        A        F        N        G        R        O        S        M         
+ DOF SET TOTALS        6        0      120      120      120      126      126        0        0        6        0
+
+ ====================================================================================================================================
     Solution Summary: Model Summary Information:
      Number of Structure GRIDs              :          21
-     Number of Nonzero K-matrix terms       :           0
-     Number of Solution Equations           :           0
+     Number of Nonzero K-matrix terms       :        1066
+     Number of Solution Equations           :         120
 
  ====================================================================================================================================
     Solution Summary: Disk Utilization Information:
@@ -170,7 +178,7 @@ Processing of bulk data entries is complete.
  +------------- MAXIMUM DISK USAGE -------------+
     HIWATER               SUB_DMAP        DMAP
        (MB)   DAY_TIME      NAME         MODULE
-      4.250   23:54:51    PREFACE     0  PREFACE 
+      4.250   22:08:57    PREFACE     0  PREFACE 
 
 
  *** DATABASE USAGE STATISTICS ***
@@ -182,9 +190,9 @@ Processing of bulk data entries is complete.
   MASTER        25000      65536         68   0.27     MASTER        25000      12.21         74         0.036            0.002
   DBALL      20000000      65536         12   0.00     DBALL      20000000    9765.62         12         0.006            0.002
   OBJSCR        25000       8192        488   1.95     OBJSCR        25000       1.53        488         0.030            0.000
-  SCRATCH    40000100      65536         60   0.00    (MEMFILE         100       0.05         64         0.031            0.000)
-                                                       SCRATCH    20000000    9765.62          1         0.000            0.000
-                                                       SCR300     20000000    9765.62          1         0.000            0.000
+  SCRATCH    40000100      65536         36   0.00    (MEMFILE         100       0.05        100         0.049            0.000)
+                                                       SCRATCH    20000000    9765.62         34         0.017            0.000
+                                                       SCR300     20000000    9765.62         12         0.006            0.000
                                                                                                                  ==============
                                                                                                           TOTAL:          0.006
  
@@ -193,16 +201,15 @@ Processing of bulk data entries is complete.
  +----------------- BUFFER POOL -----------------+      +-------------------------- SCRATCH 300 --------------------------+ 
    OPTION        BLOCKS      BLOCKS      BLOCKS           OPTION    HIWATER               SUB_DMAP        DMAP     OPN/CLS
   SELECTED     ALLOCATED     REUSED     RELEASED         SELECTED  (BLOCKS)   DAY_TIME      NAME         MODULE    COUNTER
-   BPOOL4         63068       28237           0              2           1    23:54:51    PREFACE     0  PREFACE       0
+   BPOOL4         63068       30638           0              2          12    22:08:58    SEDISP    439  SDR1          0
  ====================================================================================================================================
 
- 23:54:54  19 records read from JID file "B:\1.Github_Folder\AE-543\AE543\Project01\FEM\cantileverbeam.bdf"
- 23:54:54  NSEXIT: EXIT(20)
- 23:54:55  Analysis complete  -20
-20
-Real:        9.217 seconds ( 0:00:09.217)
-User:        1.312 seconds ( 0:00:01.312)
-Sys:         1.281 seconds ( 0:00:01.281)
+ 22:08:58  31 records read from JID file "B:\1.Github_Folder\AE-543\AE543\Project01\FEM\cantileverbeam.bdf"
+ 22:08:58  NSEXIT: EXIT(0)
+ 22:09:01  Analysis complete  0
+Real:        6.855 seconds ( 0:00:06.855)
+User:        1.390 seconds ( 0:00:01.390)
+Sys:         0.593 seconds ( 0:00:00.593)
  ==================================================
  OS:                           6.2
  OEM ID:                       9
@@ -224,4 +231,4 @@ Sys:         1.281 seconds ( 0:00:01.281)
  Detailed performance information can be found in the 
  "MSC Nastran High Performance Computing User's Guide"
  =====================================================
-MSC Nastran finished Mon Oct 27 23:54:56 PDT 2025 
+MSC Nastran finished Tue Oct 28 22:09:02 PDT 2025 

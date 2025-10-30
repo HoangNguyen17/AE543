@@ -148,7 +148,7 @@
       https://hexagon.com/support-success/manufacturing-intelligence/
       design-engineering-support/training-materials
   
-1                                                                           OCTOBER  27, 2025  MSC Nastran  5/13/24   PAGE     1
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE     1
                                                                                                                                     
 0        N A S T R A N    F I L E    A N D    S Y S T E M    P A R A M E T E R    E C H O                                           
 0                                                                                                                                   
@@ -157,13 +157,13 @@
      $ SYSFIELD=SCR*(RAW=YES,BUFFIO=YES,WNUM=16,WSIZE=16MB) $(C:/PROGRAM FILES/MSC.SO
      $ SYSFIELD=DBALL(RAW=YES,BUFFIO=YES,WNUM=16,WSIZE=16MB) $(C:/PROGRAM FILES/MSC.S
      NASTRAN BUFFSIZE=65537 $(C:/PROGRAM FILES/MSC.SOFTWARE/MSC_NASTRAN/2024.1/CONF/N
-     $ MSC.NASTRAN INPUT FILE CREATED ON OCTOBER   27, 2025 AT 23:54:35 BY           
+     $ MSC.NASTRAN INPUT FILE CREATED ON OCTOBER   28, 2025 AT 22:08:43 BY           
      $ PATRAN 2024.1                                                                 
      $ DIRECT TEXT INPUT FOR NASTRAN SYSTEM CELL SECTION                             
      $ DIRECT TEXT INPUT FOR FILE MANAGEMENT SECTION                                 
      $ DIRECT TEXT INPUT FOR EXECUTIVE CONTROL                                       
      $ LINEAR STATIC ANALYSIS, DATABASE                                              
-1                                                                           OCTOBER  27, 2025  MSC Nastran  5/13/24   PAGE     2
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE     2
                                                                                                                                     
 0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
 0                                                                                                                                   
@@ -171,7 +171,7 @@
                                                                                                                                     
      SOL 101                                                                                 
      CEND                                                                                    
-1                                                                           OCTOBER  27, 2025  MSC Nastran  5/13/24   PAGE     3
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE     3
                                                                                                                                     
 0                                                                                                                                   
 0                                        C A S E    C O N T R O L    E C H O                                                        
@@ -186,9 +186,21 @@
                   7         LOAD = 2                                                                             
                   8         DISPLACEMENT(SORT1,REAL)=ALL                                                         
                   9         SPCFORCES(SORT1,REAL)=ALL                                                            
-                 10         STRESS(SORT1,REAL,VONMISES,BILIN)=ALL                                                
-                 11      BEGIN BULK                                                                              
-1                                                                           OCTOBER  27, 2025  MSC Nastran  5/13/24   PAGE     4
+                 10         GPFORCE=ALL                                                                          
+                 11         STRESS(SORT1,REAL,VONMISES,BILIN)=ALL                                                
+                 12      $ DIRECT TEXT INPUT FOR THIS SUBCASE                                                    
+                 13      SUBCASE 2                                                                               
+                 14      $ SUBCASE NAME : 1G_DWN                                                                 
+                 15         SUBTITLE=1G_DWN                                                                      
+                 16         SPC = 2                                                                              
+                 17         LOAD = 4                                                                             
+                 18         DISPLACEMENT(SORT1,REAL)=ALL                                                         
+                 19         SPCFORCES(SORT1,REAL)=ALL                                                            
+                 20         GPFORCE=ALL                                                                          
+                 21         STRESS(SORT1,REAL,VONMISES,BILIN)=ALL                                                
+                 22      $ DIRECT TEXT INPUT FOR THIS SUBCASE                                                    
+                 23      BEGIN BULK                                                                              
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE     4
                                                                                                                                     
 0                                                                                                                                   
                                         M O D E L   S U M M A R Y          BULK = 0
@@ -196,9 +208,10 @@
                                    ----------        -----------------
                                         CBEAM                       20
                                         FORCE                        1
+                                         GRAV                        1
                                          GRID                       21
                                       HDF5OUT                        1
-                                         LOAD                        1
+                                         LOAD                        2
                                          MAT1                        1
                                         PARAM                        1
                                        PBEAML                        1
@@ -211,7 +224,7 @@
  *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
  *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 PVT, TRAILER[101, 5, 0, 0, 0, 0, 0])
  *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
- *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 CASECC, TRAILER[102, 1, 0, 1000, 0, 0, 0])
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 CASECC, TRAILER[102, 2, 0, 1000, 0, 0, 0])
  *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
  *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM1Q, TRAILER[101, 0, 0, 8, 0, 0, 0])
  *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
@@ -221,7 +234,7 @@
  *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
  *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM2, TRAILER[103, 0, 0, 0, 1024, 0, 0])
  *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
- *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM3S, TRAILER[104, 0, 0, 64, 8, 0, 0])
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM3S, TRAILER[104, 0, 0, 80, 8, 0, 0])
  *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
  *** USER INFORMATION MESSAGE  (DATA BLOCK GEOM3S IS NOT SUPPORTED)
  *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
@@ -233,319 +246,538 @@
  *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
  *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 EDT, TRAILER[103, 0, 0, 524288, 0, 0, 0])
  *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
- *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM3, TRAILER[101, 0, 0, 64, 8, 0, 0])
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM3, TRAILER[101, 0, 0, 80, 8, 0, 0])
  *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
  *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM4, TRAILER[102, 0, 0, 0, 96, 0, 0])
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =1 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =2 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =3 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =4 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =5 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =6 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =7 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =8 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =9 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =10 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =11 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =12 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =13 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =14 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =15 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =16 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =17 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =18 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =19 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER WARNING MESSAGE 5487 (EBEMS)
-     ORIENTATION VECTOR DEFINED FOR THE ELEMENT ID =20 IS NEARLY PARALLEL, IT MAY GIVE POOR RESULTS.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT         1 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT         2 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT         3 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT         4 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT         5 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT         6 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT         7 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT         8 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
-1                                                                           OCTOBER  27, 2025  MSC Nastran  5/13/24   PAGE     5
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE     5
                                                                                                                                     
 0                                                                                                                                   
-0
-0
-0
+ *** USER INFORMATION MESSAGE 7310 (VECPRN)
+     ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM WILL BE USED AS REFERENCE LOCATION.
+     RESULTANTS ABOUT ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM IN SUPERELEMENT OR MODULE
+     BASIC SYSTEM COORDINATES.
+0                                                  OLOAD    RESULTANT       
+  SUBCASE/    LOAD
+  DAREA ID    TYPE       T1            T2            T3            R1            R2            R3
+0        1     FX    0.000000E+00     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       0.000000E+00     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----      -1.000000E+03  0.000000E+00  5.000000E+03     ----                                  
+               MX       ----          ----          ----       0.000000E+00     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       0.000000E+00                             
+             TOTALS  0.000000E+00  0.000000E+00 -1.000000E+03  0.000000E+00  5.000000E+03  0.000000E+00
+0        2     FX    0.000000E+00     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       0.000000E+00     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----      -1.251100E+03  0.000000E+00  5.627750E+03     ----                                  
+               MX       ----          ----          ----       0.000000E+00     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       0.000000E+00                             
+             TOTALS  0.000000E+00  0.000000E+00 -1.251100E+03  0.000000E+00  5.627750E+03  0.000000E+00
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE     6
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+  
+ *** SYSTEM INFORMATION MESSAGE 4159 (DFMSA)
+     THE DECOMPOSITION OF KLL      YIELDS A MAXIMUM MATRIX-TO-FACTOR-DIAGONAL RATIO OF    7.141739E+00
+ ^^^     
+ *** USER INFORMATION MESSAGE 15201 (SUBDMAP SEKRRS)
+      Condition number of stiffness matrix = 2.204964E+05
+ ^^^     
+ *** USER INFORMATION MESSAGE 5293 (SSG3B)
+    FOR DATA BLOCK KLL     
+    LOAD SEQ. NO.             EPSILON              EXTERNAL WORK      EPSILONS LARGER THAN 0.001 ARE FLAGGED WITH ASTERISKS
+                1         -1.1453501E-13          1.3949742E+00
+                2         -1.2228159E-13          1.6737002E+00
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE     7
+                                                                                                                                    
+0                                                                                                                                   
+ *** USER INFORMATION MESSAGE 7310 (VECPRN)
+     ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM WILL BE USED AS REFERENCE LOCATION.
+     RESULTANTS ABOUT ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM IN SUPERELEMENT OR MODULE
+     BASIC SYSTEM COORDINATES.
+0                                                  SPCFORCE RESULTANT       
+  SUBCASE/    LOAD
+  DAREA ID    TYPE       T1            T2            T3            R1            R2            R3
+0        1     FX    0.000000E+00     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       4.669047E-25     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----       1.000000E+03  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----       0.000000E+00     ----          ----                                  
+               MY       ----          ----          ----          ----      -5.000000E+03     ----                                  
+               MZ       ----          ----          ----          ----          ----       1.748873E-24                             
+             TOTALS  0.000000E+00  4.669047E-25  1.000000E+03  0.000000E+00 -5.000000E+03  1.748873E-24
+0        2     FX    0.000000E+00     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       5.149684E-25     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----       1.251100E+03  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----       0.000000E+00     ----          ----                                  
+               MY       ----          ----          ----          ----      -5.627750E+03     ----                                  
+               MZ       ----          ----          ----          ----          ----       1.921741E-24                             
+             TOTALS  0.000000E+00  5.149684E-25  1.251100E+03  0.000000E+00 -5.627750E+03  1.921741E-24
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE     8
+                                                                                                                                    
+0                                                                                                                                   
+0                                                  MAXIMUM  SPCFORCES       
+  SUBCASE/
+  DAREA ID        T1             T2             T3             R1             R2             R3
+0        1   0.0000000E+00  4.6690468E-25  1.0000000E+03  0.0000000E+00  5.0000000E+03  1.7488731E-24
+0        2   0.0000000E+00  5.1496840E-25  1.2511000E+03  0.0000000E+00  5.6277500E+03  1.9217409E-24
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE     9
+                                                                                                                                    
+0                                                                                                                                   
+0                                                  MAXIMUM  DISPLACEMENTS   
+  SUBCASE/
+  DAREA ID        T1             T2             T3             R1             R2             R3
+0        1   0.0000000E+00  3.9962029E-19  2.7899485E-03  0.0000000E+00  8.1605171E-04  1.1988609E-19
+0        2   0.0000000E+00  4.3728090E-19  3.0550605E-03  0.0000000E+00  8.8444062E-04  1.2993310E-19
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    10
+                                                                                                                                    
+0                                                                                                                                   
+0                                                  MAXIMUM  APPLIED LOADS   
+  SUBCASE/
+  DAREA ID        T1             T2             T3             R1             R2             R3
+0        1   0.0000000E+00  0.0000000E+00  1.0000000E+03  0.0000000E+00  0.0000000E+00  0.0000000E+00
+0        2   0.0000000E+00  0.0000000E+00  1.0062775E+03  0.0000000E+00  0.0000000E+00  0.0000000E+00
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    11
+                                                                                                                                    
+0                                                                                                                                   
+ *** USER INFORMATION MESSAGE 7310 (VECPRN)
+     ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM WILL BE USED AS REFERENCE LOCATION.
+     RESULTANTS ABOUT ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM IN SUPERELEMENT OR MODULE
+     BASIC SYSTEM COORDINATES.
+0                                                  MPCFORCE RESULTANT       
+  SUBCASE/    LOAD
+  DAREA ID    TYPE       T1            T2            T3            R1            R2            R3
+0        1     FX    0.000000E+00     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       0.000000E+00     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----       0.000000E+00  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----       0.000000E+00     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       0.000000E+00                             
+             TOTALS  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+0        2     FX    0.000000E+00     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       0.000000E+00     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----       0.000000E+00  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----       0.000000E+00     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       0.000000E+00                             
+             TOTALS  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    12
+                                                                                                                                    
+0                                                                                                                                   
+0                                                  MAXIMUM  MPCFORCES       
+  SUBCASE/
+  DAREA ID        T1             T2             T3             R1             R2             R3
+0        1   0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00
+0        2   0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    13
+     LINEARSTATIC                                                                                                                   
+0                                                                                                            SUBCASE 1              
  
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT         9 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT        10 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT        11 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT        12 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT        13 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT        14 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT        15 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT        16 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT        17 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT        18 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT        19 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER FATAL MESSAGE 2026 (EMG)
-     ELEMENT        20 GEOMETRY YIELDS UNREASONABLE MATRIX.
-     User Information:
-     Referenced element geometry and/or properties yield a numerical
-     result which causes an element stiffness or mass matrix to be undefined.
-     Possible causes include, but are not limited to,
-     (1) the length of a rod or bar is zero because the end points have
-         the same coordinates,
-     (2) the sides of a triangle or quadrilateral are collinear which leads
-         to a zero cross product in defining an element coordinate system,
-     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
-     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
-         Data entries defining element end points for bad data.
- *** USER WARNING MESSAGE 9031 (SUBDMAP ERRPH1)
-     NOGO ENCOUNTERED IN SUBDMAP SEMG
-1                                                                           OCTOBER  27, 2025  MSC Nastran  5/13/24   PAGE     6
+                                             D I S P L A C E M E N T   V E C T O R
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G      0.0            0.0            0.0            0.0            0.0            0.0
+             2      G      0.0           -1.473600E-21  -1.351944E-05   0.0            7.956504E-05  -1.168889E-20
+             3      G      0.0           -5.794494E-21  -4.642011E-05   0.0            1.550498E-04  -2.277836E-20
+             4      G      0.0           -1.281283E-20  -9.768194E-05   0.0            2.264543E-04  -3.326839E-20
+             5      G      0.0           -2.237874E-20  -1.662849E-04   0.0            2.937786E-04  -4.315899E-20
+             6      G      0.0           -3.434237E-20  -2.512088E-04   0.0            3.570226E-04  -5.245016E-20
+             7      G      0.0           -4.855387E-20  -3.514338E-04   0.0            4.161864E-04  -6.114190E-20
+             8      G      0.0           -6.486337E-20  -4.659396E-04   0.0            4.712699E-04  -6.923422E-20
+             9      G      0.0           -8.312102E-20  -5.937063E-04   0.0            5.222731E-04  -7.672710E-20
+            10      G      0.0           -1.031770E-19  -7.337138E-04   0.0            5.691961E-04  -8.362055E-20
+            11      G      0.0           -1.248813E-19  -8.849419E-04   0.0            6.120388E-04  -8.991457E-20
+            12      G      0.0           -1.480843E-19  -1.046371E-03   0.0            6.508012E-04  -9.560916E-20
+            13      G      0.0           -1.726360E-19  -1.216980E-03   0.0            6.854834E-04  -1.007043E-19
+            14      G      0.0           -1.983865E-19  -1.395750E-03   0.0            7.160854E-04  -1.052000E-19
+            15      G      0.0           -2.251860E-19  -1.581660E-03   0.0            7.426071E-04  -1.090963E-19
+            16      G      0.0           -2.528847E-19  -1.773691E-03   0.0            7.650485E-04  -1.123932E-19
+            17      G      0.0           -2.813327E-19  -1.970822E-03   0.0            7.834096E-04  -1.150906E-19
+            18      G      0.0           -3.103801E-19  -2.172034E-03   0.0            7.976905E-04  -1.171887E-19
+            19      G      0.0           -3.398772E-19  -2.376306E-03   0.0            8.078912E-04  -1.186872E-19
+            20      G      0.0           -3.696739E-19  -2.582618E-03   0.0            8.140116E-04  -1.195864E-19
+            21      G      0.0           -3.996203E-19  -2.789948E-03   0.0            8.160517E-04  -1.198861E-19
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    14
+     1G_DWN                                                                                                                         
+0                                                                                                            SUBCASE 2              
+ 
+                                             D I S P L A C E M E N T   V E C T O R
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G      0.0            0.0            0.0            0.0            0.0            0.0
+             2      G      0.0           -1.655631E-21  -1.561265E-05   0.0            8.931110E-05  -1.312069E-20
+             3      G      0.0           -6.498475E-21  -5.287650E-05   0.0            1.735686E-04  -2.549895E-20
+             4      G      0.0           -1.434387E-20  -1.105346E-04   0.0            2.528238E-04  -3.714232E-20
+             5      G      0.0           -2.500902E-20  -1.873427E-04   0.0            3.271278E-04  -4.805832E-20
+             6      G      0.0           -3.831304E-20  -2.820694E-04   0.0            3.965319E-04  -5.825447E-20
+             7      G      0.0           -5.407690E-20  -3.934963E-04   0.0            4.610874E-04  -6.773831E-20
+             8      G      0.0           -7.212346E-20  -5.204174E-04   0.0            5.208454E-04  -7.651736E-20
+             9      G      0.0           -9.227747E-20  -6.616399E-04   0.0            5.758572E-04  -8.459913E-20
+            10      G      0.0           -1.143656E-19  -8.159836E-04   0.0            6.261740E-04  -9.199117E-20
+            11      G      0.0           -1.382162E-19  -9.822812E-04   0.0            6.718471E-04  -9.870100E-20
+            12      G      0.0           -1.636598E-19  -1.159378E-03   0.0            7.129276E-04  -1.047361E-19
+            13      G      0.0           -1.905287E-19  -1.346133E-03   0.0            7.494668E-04  -1.101041E-19
+            14      G      0.0           -2.186569E-19  -1.541416E-03   0.0            7.815159E-04  -1.148124E-19
+            15      G      0.0           -2.478805E-19  -1.744111E-03   0.0            8.091262E-04  -1.188687E-19
+            16      G      0.0           -2.780375E-19  -1.953116E-03   0.0            8.323488E-04  -1.222803E-19
+            17      G      0.0           -3.089676E-19  -2.167340E-03   0.0            8.512350E-04  -1.250549E-19
+            18      G      0.0           -3.405125E-19  -2.385705E-03   0.0            8.658361E-04  -1.271999E-19
+            19      G      0.0           -3.725159E-19  -2.607147E-03   0.0            8.762033E-04  -1.287230E-19
+            20      G      0.0           -4.048229E-19  -2.830612E-03   0.0            8.823877E-04  -1.296315E-19
+            21      G      0.0           -4.372809E-19  -3.055061E-03   0.0            8.844406E-04  -1.299331E-19
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    15
+     LINEARSTATIC                                                                                                                   
+0                                                                                                            SUBCASE 1              
+ 
+                               F O R C E S   O F   S I N G L E - P O I N T   C O N S T R A I N T
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G      0.0            4.669047E-25   1.000000E+03   0.0           -5.000000E+03   1.748873E-24
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    16
+     1G_DWN                                                                                                                         
+0                                                                                                            SUBCASE 2              
+ 
+                               F O R C E S   O F   S I N G L E - P O I N T   C O N S T R A I N T
+ 
+      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
+             1      G      0.0            5.149684E-25   1.251100E+03   0.0           -5.627750E+03   1.921741E-24
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    17
+     LINEARSTATIC                                                                                                                   
+0                                                                                                            SUBCASE 1              
+ 
+                                  S T R E S S E S   I N   B E A M   E L E M E N T S        ( C B E A M )
+                    STAT DIST/
+   ELEMENT-ID  GRID   LENGTH    SXC           SXD           SXE           SXF           S-MAX         S-MIN         M.S.-T   M.S.-C
+0         1
+                  1   0.000    2.815401E+06 -2.815356E+06 -2.815356E+06  2.815401E+06  2.815401E+06 -2.815356E+06          
+                  2   1.000    2.674631E+06 -2.674588E+06 -2.674588E+06  2.674631E+06  2.674631E+06 -2.674588E+06          
+0         2
+                  2   0.000    2.674631E+06 -2.674588E+06 -2.674588E+06  2.674631E+06  2.674631E+06 -2.674588E+06          
+                  3   1.000    2.533861E+06 -2.533820E+06 -2.533820E+06  2.533861E+06  2.533861E+06 -2.533820E+06          
+0         3
+                  3   0.000    2.533861E+06 -2.533820E+06 -2.533820E+06  2.533861E+06  2.533861E+06 -2.533820E+06          
+                  4   1.000    2.393091E+06 -2.393052E+06 -2.393052E+06  2.393091E+06  2.393091E+06 -2.393052E+06          
+0         4
+                  4   0.000    2.393091E+06 -2.393052E+06 -2.393052E+06  2.393091E+06  2.393091E+06 -2.393052E+06          
+                  5   1.000    2.252321E+06 -2.252285E+06 -2.252285E+06  2.252321E+06  2.252321E+06 -2.252285E+06          
+0         5
+                  5   0.000    2.252321E+06 -2.252285E+06 -2.252285E+06  2.252321E+06  2.252321E+06 -2.252285E+06          
+                  6   1.000    2.111551E+06 -2.111517E+06 -2.111517E+06  2.111551E+06  2.111551E+06 -2.111517E+06          
+0         6
+                  6   0.000    2.111551E+06 -2.111517E+06 -2.111517E+06  2.111551E+06  2.111551E+06 -2.111517E+06          
+                  7   1.000    1.970781E+06 -1.970749E+06 -1.970749E+06  1.970781E+06  1.970781E+06 -1.970749E+06          
+0         7
+                  7   0.000    1.970781E+06 -1.970749E+06 -1.970749E+06  1.970781E+06  1.970781E+06 -1.970749E+06          
+                  8   1.000    1.830011E+06 -1.829981E+06 -1.829981E+06  1.830011E+06  1.830011E+06 -1.829981E+06          
+0         8
+                  8   0.000    1.830011E+06 -1.829981E+06 -1.829981E+06  1.830011E+06  1.830011E+06 -1.829981E+06          
+                  9   1.000    1.689241E+06 -1.689213E+06 -1.689213E+06  1.689241E+06  1.689241E+06 -1.689213E+06          
+0         9
+                  9   0.000    1.689241E+06 -1.689213E+06 -1.689213E+06  1.689241E+06  1.689241E+06 -1.689213E+06          
+                 10   1.000    1.548471E+06 -1.548446E+06 -1.548446E+06  1.548471E+06  1.548471E+06 -1.548446E+06          
+0        10
+                 10   0.000    1.548471E+06 -1.548446E+06 -1.548446E+06  1.548471E+06  1.548471E+06 -1.548446E+06          
+                 11   1.000    1.407701E+06 -1.407678E+06 -1.407678E+06  1.407701E+06  1.407701E+06 -1.407678E+06          
+0        11
+                 11   0.000    1.407701E+06 -1.407678E+06 -1.407678E+06  1.407701E+06  1.407701E+06 -1.407678E+06          
+                 12   1.000    1.266930E+06 -1.266910E+06 -1.266910E+06  1.266930E+06  1.266930E+06 -1.266910E+06          
+0        12
+                 12   0.000    1.266930E+06 -1.266910E+06 -1.266910E+06  1.266930E+06  1.266930E+06 -1.266910E+06          
+                 13   1.000    1.126160E+06 -1.126142E+06 -1.126142E+06  1.126160E+06  1.126160E+06 -1.126142E+06          
+0        13
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    18
+     LINEARSTATIC                                                                                                                   
+0                                                                                                            SUBCASE 1              
+ 
+                                  S T R E S S E S   I N   B E A M   E L E M E N T S        ( C B E A M )
+                    STAT DIST/
+   ELEMENT-ID  GRID   LENGTH    SXC           SXD           SXE           SXF           S-MAX         S-MIN         M.S.-T   M.S.-C
+                 13   0.000    1.126160E+06 -1.126142E+06 -1.126142E+06  1.126160E+06  1.126160E+06 -1.126142E+06          
+                 14   1.000    9.853904E+05 -9.853745E+05 -9.853745E+05  9.853904E+05  9.853904E+05 -9.853745E+05          
+0        14
+                 14   0.000    9.853904E+05 -9.853745E+05 -9.853745E+05  9.853904E+05  9.853904E+05 -9.853745E+05          
+                 15   1.000    8.446203E+05 -8.446067E+05 -8.446067E+05  8.446203E+05  8.446203E+05 -8.446067E+05          
+0        15
+                 15   0.000    8.446203E+05 -8.446067E+05 -8.446067E+05  8.446203E+05  8.446203E+05 -8.446067E+05          
+                 16   1.000    7.038503E+05 -7.038389E+05 -7.038389E+05  7.038503E+05  7.038503E+05 -7.038389E+05          
+0        16
+                 16   0.000    7.038503E+05 -7.038389E+05 -7.038389E+05  7.038503E+05  7.038503E+05 -7.038389E+05          
+                 17   1.000    5.630802E+05 -5.630711E+05 -5.630711E+05  5.630802E+05  5.630802E+05 -5.630711E+05          
+0        17
+                 17   0.000    5.630802E+05 -5.630711E+05 -5.630711E+05  5.630802E+05  5.630802E+05 -5.630711E+05          
+                 18   1.000    4.223102E+05 -4.223034E+05 -4.223034E+05  4.223102E+05  4.223102E+05 -4.223034E+05          
+0        18
+                 18   0.000    4.223102E+05 -4.223034E+05 -4.223034E+05  4.223102E+05  4.223102E+05 -4.223034E+05          
+                 19   1.000    2.815395E+05 -2.815350E+05 -2.815350E+05  2.815395E+05  2.815395E+05 -2.815350E+05          
+0        19
+                 19   0.000    2.815395E+05 -2.815350E+05 -2.815350E+05  2.815395E+05  2.815395E+05 -2.815350E+05          
+                 20   1.000    1.407695E+05 -1.407672E+05 -1.407672E+05  1.407695E+05  1.407695E+05 -1.407672E+05          
+0        20
+                 20   0.000    1.407695E+05 -1.407672E+05 -1.407672E+05  1.407695E+05  1.407695E+05 -1.407672E+05          
+                 21   1.000   -4.096948E-09  4.096882E-09  4.096882E-09 -4.096948E-09  4.096882E-09 -4.096948E-09          
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    19
+     1G_DWN                                                                                                                         
+0                                                                                                            SUBCASE 2              
+ 
+                                  S T R E S S E S   I N   B E A M   E L E M E N T S        ( C B E A M )
+                    STAT DIST/
+   ELEMENT-ID  GRID   LENGTH    SXC           SXD           SXE           SXF           S-MAX         S-MIN         M.S.-T   M.S.-C
+0         1
+                  1   0.000    3.168875E+06 -3.168824E+06 -3.168824E+06  3.168875E+06  3.168875E+06 -3.168824E+06          
+                  2   1.000    2.993641E+06 -2.993593E+06 -2.993593E+06  2.993641E+06  2.993641E+06 -2.993593E+06          
+0         2
+                  2   0.000    2.993641E+06 -2.993593E+06 -2.993593E+06  2.993641E+06  2.993641E+06 -2.993593E+06          
+                  3   1.000    2.820175E+06 -2.820129E+06 -2.820129E+06  2.820175E+06  2.820175E+06 -2.820129E+06          
+0         3
+                  3   0.000    2.820175E+06 -2.820129E+06 -2.820129E+06  2.820175E+06  2.820175E+06 -2.820129E+06          
+                  4   1.000    2.648476E+06 -2.648433E+06 -2.648433E+06  2.648476E+06  2.648476E+06 -2.648433E+06          
+0         4
+                  4   0.000    2.648476E+06 -2.648433E+06 -2.648433E+06  2.648476E+06  2.648476E+06 -2.648433E+06          
+                  5   1.000    2.478544E+06 -2.478504E+06 -2.478504E+06  2.478544E+06  2.478544E+06 -2.478504E+06          
+0         5
+                  5   0.000    2.478544E+06 -2.478504E+06 -2.478504E+06  2.478544E+06  2.478544E+06 -2.478504E+06          
+                  6   1.000    2.310380E+06 -2.310343E+06 -2.310343E+06  2.310380E+06  2.310380E+06 -2.310343E+06          
+0         6
+                  6   0.000    2.310380E+06 -2.310343E+06 -2.310343E+06  2.310380E+06  2.310380E+06 -2.310343E+06          
+                  7   1.000    2.143983E+06 -2.143948E+06 -2.143948E+06  2.143983E+06  2.143983E+06 -2.143948E+06          
+0         7
+                  7   0.000    2.143983E+06 -2.143948E+06 -2.143948E+06  2.143983E+06  2.143983E+06 -2.143948E+06          
+                  8   1.000    1.979353E+06 -1.979321E+06 -1.979321E+06  1.979353E+06  1.979353E+06 -1.979321E+06          
+0         8
+                  8   0.000    1.979353E+06 -1.979321E+06 -1.979321E+06  1.979353E+06  1.979353E+06 -1.979321E+06          
+                  9   1.000    1.816491E+06 -1.816462E+06 -1.816462E+06  1.816491E+06  1.816491E+06 -1.816462E+06          
+0         9
+                  9   0.000    1.816491E+06 -1.816462E+06 -1.816462E+06  1.816491E+06  1.816491E+06 -1.816462E+06          
+                 10   1.000    1.655396E+06 -1.655370E+06 -1.655370E+06  1.655396E+06  1.655396E+06 -1.655370E+06          
+0        10
+                 10   0.000    1.655396E+06 -1.655370E+06 -1.655370E+06  1.655396E+06  1.655396E+06 -1.655370E+06          
+                 11   1.000    1.496069E+06 -1.496045E+06 -1.496045E+06  1.496069E+06  1.496069E+06 -1.496045E+06          
+0        11
+                 11   0.000    1.496069E+06 -1.496045E+06 -1.496045E+06  1.496069E+06  1.496069E+06 -1.496045E+06          
+                 12   1.000    1.338509E+06 -1.338487E+06 -1.338487E+06  1.338509E+06  1.338509E+06 -1.338487E+06          
+0        12
+                 12   0.000    1.338509E+06 -1.338487E+06 -1.338487E+06  1.338509E+06  1.338509E+06 -1.338487E+06          
+                 13   1.000    1.182716E+06 -1.182697E+06 -1.182697E+06  1.182716E+06  1.182716E+06 -1.182697E+06          
+0        13
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    20
+     1G_DWN                                                                                                                         
+0                                                                                                            SUBCASE 2              
+ 
+                                  S T R E S S E S   I N   B E A M   E L E M E N T S        ( C B E A M )
+                    STAT DIST/
+   ELEMENT-ID  GRID   LENGTH    SXC           SXD           SXE           SXF           S-MAX         S-MIN         M.S.-T   M.S.-C
+                 13   0.000    1.182716E+06 -1.182697E+06 -1.182697E+06  1.182716E+06  1.182716E+06 -1.182697E+06          
+                 14   1.000    1.028691E+06 -1.028674E+06 -1.028674E+06  1.028691E+06  1.028691E+06 -1.028674E+06          
+0        14
+                 14   0.000    1.028691E+06 -1.028674E+06 -1.028674E+06  1.028691E+06  1.028691E+06 -1.028674E+06          
+                 15   1.000    8.764329E+05 -8.764188E+05 -8.764188E+05  8.764329E+05  8.764329E+05 -8.764188E+05          
+0        15
+                 15   0.000    8.764329E+05 -8.764188E+05 -8.764188E+05  8.764329E+05  8.764329E+05 -8.764188E+05          
+                 16   1.000    7.259424E+05 -7.259307E+05 -7.259307E+05  7.259424E+05  7.259424E+05 -7.259307E+05          
+0        16
+                 16   0.000    7.259424E+05 -7.259307E+05 -7.259307E+05  7.259424E+05  7.259424E+05 -7.259307E+05          
+                 17   1.000    5.772192E+05 -5.772099E+05 -5.772099E+05  5.772192E+05  5.772192E+05 -5.772099E+05          
+0        17
+                 17   0.000    5.772192E+05 -5.772099E+05 -5.772099E+05  5.772192E+05  5.772192E+05 -5.772099E+05          
+                 18   1.000    4.302633E+05 -4.302564E+05 -4.302564E+05  4.302633E+05  4.302633E+05 -4.302564E+05          
+0        18
+                 18   0.000    4.302633E+05 -4.302564E+05 -4.302564E+05  4.302633E+05  4.302633E+05 -4.302564E+05          
+                 19   1.000    2.850743E+05 -2.850697E+05 -2.850697E+05  2.850743E+05  2.850743E+05 -2.850697E+05          
+0        19
+                 19   0.000    2.850743E+05 -2.850697E+05 -2.850697E+05  2.850743E+05  2.850743E+05 -2.850697E+05          
+                 20   1.000    1.416532E+05 -1.416509E+05 -1.416509E+05  1.416532E+05  1.416532E+05 -1.416509E+05          
+0        20
+                 20   0.000    1.416532E+05 -1.416509E+05 -1.416509E+05  1.416532E+05  1.416532E+05 -1.416509E+05          
+                 21   1.000    4.096948E-09 -4.096882E-09 -4.096882E-09  4.096948E-09  4.096948E-09 -4.096882E-09          
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    21
+     LINEARSTATIC                                                                                                                   
+0                                                                                                            SUBCASE 1              
+ 
+                                          G R I D   P O I N T   F O R C E   B A L A N C E
+ 
+   POINT-ID    ELEMENT-ID     SOURCE             T1             T2             T3             R1             R2             R3
+          1                  F-OF-SPC       0.0            4.669047E-25   1.000000E+03   0.0           -5.000000E+03   1.748873E-24
+          1             1    BEAM           0.0           -4.669047E-25  -1.000000E+03   0.0            5.000000E+03  -1.748873E-24
+          1                  *TOTALS*       0.0            0.0            0.0            0.0            0.0            0.0
+0         2             1    BEAM           0.0            4.669047E-25   1.000000E+03   0.0           -4.750000E+03   1.631743E-24
+          2             2    BEAM           0.0           -4.677125E-25  -1.000000E+03   0.0            4.750000E+03  -1.631743E-24
+          2                  *TOTALS*       0.0           -8.077936E-28   0.0            0.0            0.0            0.0
+0         3             2    BEAM           0.0            4.677125E-25   1.000000E+03   0.0           -4.500000E+03   1.515421E-24
+          3             3    BEAM           0.0           -4.636735E-25  -1.000000E+03   0.0            4.500000E+03  -1.512190E-24
+          3                  *TOTALS*       0.0            4.038968E-27  -9.094947E-13   0.0           -1.818989E-12   3.231174E-27
+0         4             3    BEAM           0.0            4.636735E-25   1.000000E+03   0.0           -4.250000E+03   1.395867E-24
+          4             4    BEAM           0.0           -4.677125E-25  -1.000000E+03   0.0            4.250000E+03  -1.394252E-24
+          4                  *TOTALS*       0.0           -4.038968E-27   1.182343E-11   0.0            1.818989E-12   1.615587E-27
+0         5             4    BEAM           0.0            4.677125E-25   1.000000E+03   0.0           -4.000000E+03   1.277929E-24
+          5             5    BEAM           0.0           -4.588267E-25  -1.000000E+03   0.0            4.000000E+03  -1.269851E-24
+          5                  *TOTALS*       0.0            8.885729E-27  -3.637979E-12   0.0            3.637979E-12   8.077936E-27
+0         6             5    BEAM           0.0            4.588267E-25   1.000000E+03   0.0           -3.750000E+03   1.156760E-24
+          6             6    BEAM           0.0           -4.669047E-25  -1.000000E+03   0.0            3.750000E+03  -1.156760E-24
+          6                  *TOTALS*       0.0           -8.077936E-27   7.275958E-12   0.0            0.0            0.0
+0         7             6    BEAM           0.0            4.669047E-25   1.000000E+03   0.0           -3.500000E+03   1.040438E-24
+          7             7    BEAM           0.0           -4.717514E-25  -1.000000E+03   0.0            3.500000E+03  -1.033976E-24
+          7                  *TOTALS*       0.0           -4.846761E-27  -2.728484E-11   0.0            3.637979E-12   6.462349E-27
+0         8             7    BEAM           0.0            4.717514E-25   1.000000E+03   0.0           -3.250000E+03   9.144223E-25
+          8             8    BEAM           0.0           -4.459020E-25  -1.000000E+03   0.0            3.250000E+03  -9.208847E-25
+          8                  *TOTALS*       0.0            2.584939E-26   1.091394E-11   0.0            0.0           -6.462349E-27
+0         9             8    BEAM           0.0            4.459020E-25   1.000000E+03   0.0           -3.000000E+03   8.077936E-25
+          9             9    BEAM           0.0           -4.394397E-25  -1.000000E+03   0.0            3.000000E+03  -7.948689E-25
+          9                  *TOTALS*       0.0            6.462349E-27   4.001777E-11   0.0            3.637979E-12   1.292470E-26
+0        10             9    BEAM           0.0            4.394397E-25   1.000000E+03   0.0           -2.750000E+03   6.785466E-25
+         10            10    BEAM           0.0           -4.297462E-25  -1.000000E+03   0.0            2.750000E+03  -6.850089E-25
+         10                  *TOTALS*       0.0            9.693523E-27  -2.182787E-11   0.0            3.637979E-12  -6.462349E-27
+0        11            10    BEAM           0.0            4.297462E-25   1.000000E+03   0.0           -2.500000E+03   5.816114E-25
+         11            11    BEAM           0.0           -3.974344E-25  -1.000000E+03   0.0            2.500000E+03  -5.719178E-25
+         11                  *TOTALS*       0.0            3.231174E-26  -1.091394E-11   0.0            2.182787E-11   9.693523E-27
+0        12            11    BEAM           0.0            3.974344E-25   1.000000E+03   0.0           -2.250000E+03   4.717514E-25
+         12            12    BEAM           0.0           -3.618915E-25  -1.000000E+03   0.0            2.250000E+03  -4.846761E-25
+         12                  *TOTALS*       0.0            3.554292E-26   1.455192E-11   0.0           -7.275958E-12  -1.292470E-26
+0        13            12    BEAM           0.0            3.618915E-25   1.000000E+03   0.0           -2.000000E+03   4.006656E-25
+         13            13    BEAM           0.0           -4.297462E-25  -1.000000E+03   0.0            2.000000E+03  -4.006656E-25
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    22
+     LINEARSTATIC                                                                                                                   
+0                                                                                                            SUBCASE 1              
+ 
+                                          G R I D   P O I N T   F O R C E   B A L A N C E
+ 
+   POINT-ID    ELEMENT-ID     SOURCE             T1             T2             T3             R1             R2             R3
+         13                  *TOTALS*       0.0           -6.785466E-26   7.275958E-12   0.0           -1.455192E-11   0.0
+0        14            13    BEAM           0.0            4.297462E-25   1.000000E+03   0.0           -1.750000E+03   2.972680E-25
+         14            14    BEAM           0.0           -2.617251E-25  -1.000000E+03   0.0            1.750000E+03  -2.972680E-25
+         14                  *TOTALS*       0.0            1.680211E-25  -4.729372E-11   0.0            2.910383E-11   0.0
+0        15            14    BEAM           0.0            2.617251E-25   1.000000E+03   0.0           -1.500000E+03   2.261822E-25
+         15            15    BEAM           0.0           -2.681875E-25  -1.000000E+03   0.0            1.500000E+03  -2.132575E-25
+         15                  *TOTALS*       0.0           -6.462349E-27   6.548362E-11   0.0           -1.455192E-11   1.292470E-26
+0        16            15    BEAM           0.0            2.681875E-25   1.000000E+03   0.0           -1.250000E+03   1.615587E-25
+         16            16    BEAM           0.0           -2.391069E-25  -1.000000E+03   0.0            1.250000E+03  -1.421717E-25
+         16                  *TOTALS*       0.0            2.908057E-26  -4.729372E-11   0.0            1.455192E-11   1.938705E-26
+0        17            16    BEAM           0.0            2.391069E-25   1.000000E+03   0.0           -1.000000E+03   9.047288E-26
+         17            17    BEAM           0.0           -1.550964E-25  -1.000000E+03   0.0            1.000000E+03  -9.047288E-26
+         17                  *TOTALS*       0.0            8.401053E-26   1.200533E-10   0.0           -3.637979E-11   0.0
+0        18            17    BEAM           0.0            1.550964E-25   1.000000E+03   0.0           -7.500000E+02   6.462349E-26
+         18            18    BEAM           0.0           -4.200527E-26  -1.000000E+03   0.0            7.500000E+02  -4.523644E-26
+         18                  *TOTALS*       0.0            1.130911E-25   1.564331E-10   0.0           -2.910383E-11   1.938705E-26
+0        19            18    BEAM           0.0            4.200527E-26   1.000000E+03   0.0           -4.999990E+02   3.877409E-26
+         19            19    BEAM           0.0           -1.130911E-25  -1.000000E+03   0.0            4.999990E+02  -1.938705E-26
+         19                  *TOTALS*       0.0           -7.108583E-26  -3.419700E-10   0.0            2.182787E-11   1.938705E-26
+0        20            19    BEAM           0.0            1.130911E-25   1.000000E+03   0.0           -2.499990E+02  -2.584939E-26
+         20            20    BEAM           0.0            3.877409E-26  -1.000000E+03   0.0            2.499990E+02  -1.292470E-26
+         20                  *TOTALS*       0.0            1.518652E-25   3.819878E-10   0.0           -7.275958E-12  -3.877409E-26
+0        21                  APP-LOAD       0.0            0.0           -1.000000E+03   0.0            0.0            0.0
+         21            20    BEAM           0.0           -3.877409E-26   1.000000E+03   0.0            7.275958E-12   6.462349E-27
+         21                  *TOTALS*       0.0           -3.877409E-26  -3.274181E-11   0.0            7.275958E-12   6.462349E-27
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    23
+     1G_DWN                                                                                                                         
+0                                                                                                            SUBCASE 2              
+ 
+                                          G R I D   P O I N T   F O R C E   B A L A N C E
+ 
+   POINT-ID    ELEMENT-ID     SOURCE             T1             T2             T3             R1             R2             R3
+          1                  APP-LOAD       0.0            0.0           -6.277500E+00   0.0            0.0            0.0
+          1                  F-OF-SPC       0.0            5.149684E-25   1.251100E+03   0.0           -5.627750E+03   1.921741E-24
+          1             1    BEAM           0.0           -5.149684E-25  -1.244823E+03   0.0            5.627750E+03  -1.921741E-24
+          1                  *TOTALS*       0.0            0.0            0.0            0.0            0.0            0.0
+0         2                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+          2             1    BEAM           0.0            5.149684E-25   1.244823E+03   0.0           -5.316544E+03   1.792494E-24
+          2             2    BEAM           0.0           -5.153723E-25  -1.232268E+03   0.0            5.316544E+03  -1.793302E-24
+          2                  *TOTALS*       0.0           -4.038968E-28   2.273737E-13   0.0            9.094947E-13  -8.077936E-28
+0         3                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+          3             2    BEAM           0.0            5.153723E-25   1.232268E+03   0.0           -5.008478E+03   1.665670E-24
+          3             3    BEAM           0.0           -5.072944E-25  -1.219713E+03   0.0            5.008478E+03  -1.662439E-24
+          3                  *TOTALS*       0.0            8.077936E-27   3.865352E-12   0.0           -2.728484E-12   3.231174E-27
+0         4                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+          4             3    BEAM           0.0            5.072944E-25   1.219713E+03   0.0           -4.703549E+03   1.536423E-24
+          4             4    BEAM           0.0           -5.153723E-25  -1.207158E+03   0.0            4.703549E+03  -1.531577E-24
+          4                  *TOTALS*       0.0           -8.077936E-27   2.046363E-12   0.0            1.818989E-12   4.846761E-27
+0         5                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+          5             4    BEAM           0.0            5.153723E-25   1.207158E+03   0.0           -4.401760E+03   1.405561E-24
+          5             5    BEAM           0.0           -5.137567E-25  -1.194603E+03   0.0            4.401760E+03  -1.395867E-24
+          5                  *TOTALS*       0.0            1.615587E-27   2.046363E-12   0.0            3.637979E-12   9.693523E-27
+0         6                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+          6             5    BEAM           0.0            5.137567E-25   1.194603E+03   0.0           -4.103109E+03   1.273083E-24
+          6             6    BEAM           0.0           -5.072944E-25  -1.182048E+03   0.0            4.103109E+03  -1.273083E-24
+          6                  *TOTALS*       0.0            6.462349E-27  -1.614353E-11   0.0           -3.637979E-12   0.0
+0         7                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+          7             6    BEAM           0.0            5.072944E-25   1.182048E+03   0.0           -3.807598E+03   1.143836E-24
+          7             7    BEAM           0.0           -5.024476E-25  -1.169493E+03   0.0            3.807598E+03  -1.137373E-24
+          7                  *TOTALS*       0.0            4.846761E-27   1.114131E-11   0.0           -3.637979E-12   6.462349E-27
+0         8                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+          8             7    BEAM           0.0            5.024476E-25   1.169493E+03   0.0           -3.515224E+03   1.008126E-24
+          8             8    BEAM           0.0           -5.040632E-25  -1.156938E+03   0.0            3.515224E+03  -9.984328E-25
+          8                  *TOTALS*       0.0           -1.615587E-27   2.205525E-11   0.0            7.275958E-12   9.693523E-27
+0         9                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+          9             8    BEAM           0.0            5.040632E-25   1.156938E+03   0.0           -3.225990E+03   8.756482E-25
+          9             9    BEAM           0.0           -4.652891E-25  -1.144383E+03   0.0            3.225990E+03  -8.821106E-25
+          9                  *TOTALS*       0.0            3.877409E-26  -3.410605E-12   0.0           -7.275958E-12  -6.462349E-27
+0        10                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+         10             9    BEAM           0.0            4.652891E-25   1.144383E+03   0.0           -2.939894E+03   7.625571E-25
+         10            10    BEAM           0.0           -4.717514E-25  -1.131828E+03   0.0            2.939894E+03  -7.496324E-25
+         10                  *TOTALS*       0.0           -6.462349E-27  -3.251444E-11   0.0            7.275958E-12   1.292470E-26
+0        11                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    24
+     1G_DWN                                                                                                                         
+0                                                                                                            SUBCASE 2              
+ 
+                                          G R I D   P O I N T   F O R C E   B A L A N C E
+ 
+   POINT-ID    ELEMENT-ID     SOURCE             T1             T2             T3             R1             R2             R3
+         11            10    BEAM           0.0            4.717514E-25   1.131828E+03   0.0           -2.656938E+03   6.333102E-25
+         11            11    BEAM           0.0           -4.814450E-25  -1.119273E+03   0.0            2.656938E+03  -6.462349E-25
+         11                  *TOTALS*       0.0           -9.693523E-27   2.205525E-11   0.0            0.0           -1.292470E-26
+0        12                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+         12            11    BEAM           0.0            4.814450E-25   1.119273E+03   0.0           -2.377119E+03   5.234502E-25
+         12            12    BEAM           0.0           -3.554292E-25  -1.106718E+03   0.0            2.377119E+03  -5.169879E-25
+         12                  *TOTALS*       0.0            1.260158E-25  -4.706635E-11   0.0           -2.182787E-11   6.462349E-27
+0        13                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+         13            12    BEAM           0.0            3.554292E-25   1.106718E+03   0.0           -2.100440E+03   4.459020E-25
+         13            13    BEAM           0.0           -4.976008E-25  -1.094163E+03   0.0            2.100440E+03  -4.394397E-25
+         13                  *TOTALS*       0.0           -1.421717E-25   6.571099E-11   0.0            7.275958E-12   6.462349E-27
+0        14                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+         14            13    BEAM           0.0            4.976008E-25   1.094163E+03   0.0           -1.826899E+03   3.101927E-25
+         14            14    BEAM           0.0           -4.006656E-25  -1.081608E+03   0.0            1.826899E+03  -3.360421E-25
+         14                  *TOTALS*       0.0            9.693523E-26  -1.796252E-11   0.0            1.455192E-11  -2.584939E-26
+0        15                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+         15            14    BEAM           0.0            4.006656E-25   1.081608E+03   0.0           -1.556498E+03   2.261822E-25
+         15            15    BEAM           0.0           -2.875745E-25  -1.069053E+03   0.0            1.556498E+03  -2.261822E-25
+         15                  *TOTALS*       0.0            1.130911E-25  -3.615241E-11   0.0           -2.182787E-11   0.0
+0        16                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+         16            15    BEAM           0.0            2.875745E-25   1.069053E+03   0.0           -1.289234E+03   1.680211E-25
+         16            16    BEAM           0.0           -2.229510E-25  -1.056498E+03   0.0            1.289234E+03  -1.680211E-25
+         16                  *TOTALS*       0.0            6.462349E-26   5.115908E-11   0.0            1.455192E-11   0.0
+0        17                  APP-LOAD       0.0            0.0           -1.255500E+01   0.0            0.0            0.0
+         17            16    BEAM           0.0            2.229510E-25   1.056498E+03   0.0           -1.025110E+03   1.163223E-25
+         17            17    BEAM           0.0           -1.486340E-25  -1.043943E+03   0.0            1.025110E+03  -9.047288E-26
+         17                  *TOTALS*       0.0            7.431701E-26   1.020908E-10   0.0           -2.910383E-11   2.584939E-26
+0        18                  APP-LOAD       0.0            0.0           -1.255503E+01   0.0            0.0            0.0
+         18            17    BEAM           0.0            1.486340E-25   1.043943E+03   0.0           -7.641244E+02   4.523644E-26
+         18            18    BEAM           0.0           -1.777146E-25  -1.031387E+03   0.0            7.641244E+02  -4.523644E-26
+         18                  *TOTALS*       0.0           -2.908057E-26   3.205969E-11   0.0           -2.182787E-11   0.0
+0        19                  APP-LOAD       0.0            0.0           -1.255503E+01   0.0            0.0            0.0
+         19            18    BEAM           0.0            1.777146E-25   1.031387E+03   0.0           -5.062765E+02   2.584939E-26
+         19            19    BEAM           0.0           -1.292470E-25  -1.018832E+03   0.0            5.062765E+02  -1.292470E-26
+         19                  *TOTALS*       0.0            4.846761E-26  -3.331024E-11   0.0            1.455192E-11   1.292470E-26
+0        20                  APP-LOAD       0.0            0.0           -1.255497E+01   0.0            0.0            0.0
+         20            19    BEAM           0.0            1.292470E-25   1.018832E+03   0.0           -2.515684E+02  -1.938705E-26
+         20            20    BEAM           0.0           -9.370405E-26  -1.006277E+03   0.0            2.515684E+02  -1.292470E-26
+         20                  *TOTALS*       0.0            3.554292E-26   3.250307E-10   0.0           -3.637979E-11  -3.231174E-26
+0        21                  APP-LOAD       0.0            0.0           -1.006277E+03   0.0            0.0            0.0
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    25
+     1G_DWN                                                                                                                         
+0                                                                                                            SUBCASE 2              
+ 
+                                          G R I D   P O I N T   F O R C E   B A L A N C E
+ 
+   POINT-ID    ELEMENT-ID     SOURCE             T1             T2             T3             R1             R2             R3
+         21            20    BEAM           0.0            9.370405E-26   1.006277E+03   0.0           -7.275958E-12  -1.292470E-26
+         21                  *TOTALS*       0.0            9.370405E-26  -1.444960E-10   0.0           -7.275958E-12  -1.292470E-26
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeOutput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 OUG1, TRAILER[101, 0, 336, 0, 0, 0, 1])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeOutput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 OES1X, TRAILER[101, 63, 10, 28, 25, 0, 1])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeOutput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 OGPFB1, TRAILER[101, 0, 2, 0, 0, 0, 1])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeOutput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 OQG1, TRAILER[102, 0, 336, 0, 0, 0, 1])
+1                                                                           OCTOBER  28, 2025  MSC Nastran  5/13/24   PAGE    26
                                                                                                                                     
 0                                                                                                                                   
  * * * *  D B D I C T   P R I N T  * * * *      SUBDMAP = PRTSUM  ,  DMAP STATEMENT NO.     75
@@ -555,6 +787,7 @@
 0                                   * * * *  A N A L Y S I S  S U M M A R Y  T A B L E  * * * *
 0 SEID  PEID PROJ VERS APRCH      SEMG SEMR SEKR SELG SELR MODES DYNRED SOLLIN SOLNL LOOPID DESIGN CYCLE SENSITIVITY
  -------------------------------------------------------------------------------------------------------------------
+     0     0    1    1 '        '    T    T    T    T    T     F      F      T     F     -1            0           F
 0SEID = SUPERELEMENT ID.
  PEID = PRIMARY SUPERELEMENT ID OF IMAGE SUPERELEMENT.
  PROJ = PROJECT ID NUMBER.
